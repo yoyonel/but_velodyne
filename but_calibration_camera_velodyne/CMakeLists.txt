@@ -34,5 +34,30 @@ add_executable(coloring src/coloring-node.cpp src/Image.cpp src/Velodyne.cpp )
 target_link_libraries(coloring ${PCL_LIBRARIES}) 
 target_link_libraries(coloring ${catkin_LIBRARIES})
 
+##############################################################
+# TODO install nodes etc. (W.I.P.)
+##############################################################
+#
+## Executables
+install(TARGETS calibration
+        RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+        COMPONENT main
+)
+install(TARGETS coloring
+        RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+        COMPONENT main
+)
+
+# YAML
+install(FILES 
+        conf/calibration.yaml
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/conf
+)
+
+## Launch files ROS
+install(DIRECTORY launch/
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch)
+##############################################################
+
 roslint_cpp()
 
