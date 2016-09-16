@@ -60,11 +60,46 @@ target_link_libraries( cloud_assembler butvelo )
 add_library( butvelo_cloudassembler_nodelet src/cloud_assembler_nodelet.cpp )
 target_link_libraries( butvelo_cloudassembler_nodelet butvelo )
 
-# TODO install nodes etc.
+##############################################################
+# TODO install nodes etc. (W.I.P.)
+##############################################################
+#
+## Executables
+install(TARGETS laser_scan
+        RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+        COMPONENT main
+)
+install(TARGETS ground_map
+        RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+        COMPONENT main
+)
+install(TARGETS cloud_assembler
+        RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+        COMPONENT main
+)
+## Libs
+install(TARGETS butvelo
+        LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+)
+install(TARGETS butvelo_laserscan_nodelet
+        LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+)
+install(TARGETS butvelo_groundmap_nodelet
+        LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+)
+install(TARGETS butvelo_cloudassembler_nodelet
+        LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+)
 
+## XML
 install(FILES 
   nodelets.xml
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
-  
+
+## Launch files ROS
+install(DIRECTORY launch/
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch)
+##############################################################
+
 roslint_cpp()
 

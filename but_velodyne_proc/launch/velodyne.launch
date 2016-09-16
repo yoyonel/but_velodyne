@@ -4,5 +4,8 @@
     <include file="$(find but_velodyne_proc)/launch/32e_points.launch">
         <arg name="calibration" value="$(find but_velodyne_proc)/config/32db.yaml"/>
     </include>
+    <!-- <include file="$(find but_velodyne_proc)/launch/16e_points.launch">
+        <arg name="calibration" value="$(find but_velodyne_proc)/config/16db.yaml"/>
+    </include> -->
 </launch>
 
